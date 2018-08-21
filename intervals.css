@@ -1,0 +1,15 @@
+#current-root {
+  font-size: 120px;
+  display: inline;
+}
+
+#interval {
+  font-size: 60px;
+  display: inline;
+  margin-left: 150px;
+}
+
+#answer {
+  margin-top: 50px;
+  font-size: 60px;
+}
