@@ -19,24 +19,24 @@ window.onload = function(){
   ];
 
   const intervals = [
-      // {'name': 'Minor 2', 'semitones': 1},
-      // {'name': 'Major 2', 'semitones': 2},
-      {'name': 'Minor 3', 'semitones': 3},
-      {'name': 'Major 3', 'semitones': 4},
-      // {'name': 'Perfect 4', 'semitones': 5},
-      {'name': 'Sharp 4/Flat 5', 'semitones': 6},
-      {'name': 'Perfect 5', 'semitones': 7},
-      // {'name': 'Minor 6', 'semitones': 8},
-      // {'name': 'Major 6', 'semitones': 9},
-      {'name': 'Minor 7', 'semitones': 10},
-      {'name': 'Major 7', 'semitones': 11},
-      // {'name': 'Flat 9', 'semitones': 13},
+      // {'name': 'm2', 'semitones': 1},
+      // {'name': 'M2', 'semitones': 2},
+      {'name': 'm3', 'semitones': 3},
+      {'name': 'M3', 'semitones': 4},
+      // {'name': 'P4', 'semitones': 5},
+      // {'name': '#4/b5', 'semitones': 6},
+      {'name': 'P5', 'semitones': 7},
+      // {'name': 'm6', 'semitones': 8},
+      // {'name': 'M6', 'semitones': 9},
+      {'name': 'm7', 'semitones': 10},
+      {'name': 'M7', 'semitones': 11},
+      // {'name': 'b9', 'semitones': 13},
       // {'name': '9', 'semitones': 14},
-      // {'name': 'Sharp 9/Flat 11', 'semitones': 15},
+      // {'name': '#9/b11', 'semitones': 15},
       // {'name': '11', 'semitones': 16}
   ];
 
-  let currentNoteIndex, currentInterval, currentAnswerIndex;
+  let currentNoteIndex, currentInterval, currentAnswerIndex, answerTime;
 
   function newQuestion() {
     currentNoteIndex = Math.floor(Math.random()*notes.length);
@@ -48,10 +48,11 @@ window.onload = function(){
     currentRootDiv.innerText = notes[currentNoteIndex];
     intervalKDiv.innerText = currentInterval.name;
     answerDiv.innerText = '';
+    answerTime = document.querySelector('#answer-timer').value * 1000;
     setTimeout(function() {
       answerDiv.innerText = notes[currentAnswerIndex];
-    }, 2000)
+      setTimeout(newQuestion, 1500);
+    }, answerTime);
   }
   newQuestion();
-  setInterval(newQuestion, 4000);
 }
