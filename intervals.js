@@ -5,17 +5,17 @@ window.onload = function(){
 
   const notes = [
     'A',
-    'A#/Bb',
+    'Bb',
     'B',
     'C',
-    'C#/Db',
+    'Db',
     'D',
-    'D#/Eb',
+    'Eb',
     'E',
     'F',
-    'F#/Gb',
+    'Gb',
     'G',
-    'G#/Ab'
+    'Ab'
   ];
 
   const intervals = [
@@ -39,7 +39,11 @@ window.onload = function(){
   let currentNoteIndex, currentInterval, currentAnswerIndex, answerTime;
 
   function newQuestion() {
-    currentNoteIndex = Math.floor(Math.random()*notes.length);
+    let newNoteIndex = Math.floor(Math.random()*notes.length);
+    while (newNoteIndex === currentNoteIndex) {
+      newNoteIndex = Math.floor(Math.random()*notes.length);
+    }
+    currentNoteIndex = newNoteIndex;
     currentInterval = intervals[Math.floor(Math.random()*intervals.length)];
     currentAnswerIndex = currentNoteIndex + currentInterval.semitones;
     if (currentAnswerIndex > notes.length - 1) {
